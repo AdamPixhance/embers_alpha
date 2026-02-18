@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+.venv-1/
+.venv-2/
+venv/
+
+# Local runtime artifacts
+embers_launch.log
+tmp_err.log
+tmp_out.log
+backups/
+
+# Local user data (keep template)
+data/habits.db
+
+# Packaging outputs
+build/
+dist/
+dist-installer/
+*.spec
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/

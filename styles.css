@@ -1,0 +1,740 @@
+/* =========================
+   Premium Apple-Inspired Design
+   Desktop-Optimized for PC
+   
+   This stylesheet provides a cohesive, modern design system for Embers.
+   Key design principles:
+   - Glass-morphism with backdrop blur for depth
+   - Gradient-based buttons with smooth transitions
+   - Color-coded feedback (green = positive, red = negative)
+   - Refined typography with Apple-inspired system font stack
+   - Responsive grid layout (3-column desktop, 2-column tablet, 1-column mobile)
+   
+   See variables in :root for customization (colors, spacing, transitions).
+   ========================= */
+
+:root {
+    /* Desktop-first sizing */
+    --page-max: 1440px;
+    --page-w: min(var(--page-max), 92vw);
+
+    /* Refined color palette - Modern & Premium */
+    --bg-primary: #fafbfc;
+    --bg-secondary: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #94a3b8;
+
+    /* Green tones for positive feedback */
+    --positive: #16a34a;
+    --positive-light: #dcfce7;
+    --positive-dark: #15803d;
+    --positive-deeper: #166534;
+    --positive-glow: rgba(22, 163, 74, 0.15);
+
+    /* Red tones for negative feedback */
+    --negative: #dc2626;
+    --negative-light: #fee2e2;
+    --negative-dark: #991b1b;
+    --negative-deeper: #7f1d1d;
+    --negative-glow: rgba(220, 38, 38, 0.15);
+
+    /* Neutral accents */
+    --accent-blue: #2563eb;
+    --accent-purple: #7c3aed;
+    --accent-indigo: #4f46e5;
+
+    /* Surface styling */
+    --border-light: rgba(15, 23, 42, 0.06);
+    --border-base: rgba(15, 23, 42, 0.10);
+    --glass: rgba(255, 255, 255, 0.88);
+    --glass-strong: rgba(255, 255, 255, 0.95);
+    
+    /* Shadows - refined and sophisticated */
+    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-sm: 0 4px 6px rgba(15, 23, 42, 0.07);
+    --shadow-md: 0 10px 15px rgba(15, 23, 42, 0.10);
+    --shadow-lg: 0 16px 24px rgba(15, 23, 42, 0.12);
+    --shadow-xl: 0 20px 32px rgba(15, 23, 42, 0.15);
+
+    /* Design system */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    /* Transitions */
+    --transition-fast: 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================= 
+   Global Styles
+   ========================= */
+
+body, .q-page {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.25px;
+    font-weight: 400;
+}
+
+/* Main app container - centered regardless of viewport size */
+.app-shell {
+    width: var(--page-w);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 8px;
+    box-sizing: border-box;
+    align-self: center;
+}
+
+.center-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ========================= 
+   Pyramid Sections
+   ========================= */
+
+.pyramid-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 56px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient backgrounds - subtle but sophisticated */
+.pos-section {
+    background: linear-gradient(135deg, #fafbfc 0%, #f0f9ff 50%, #fafbfc 100%);
+}
+
+.neg-section {
+    background: linear-gradient(135deg, #fafbfc 0%, #fef2f2 50%, #fafbfc 100%);
+}
+
+/* Refined aurora blobs */
+.pyramid-section::before,
+.pyramid-section::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0.35;
+    pointer-events: none;
+    transform: translateZ(0);
+}
+
+.pos-section::before {
+    width: 600px;
+    height: 600px;
+    top: -150px;
+    left: -150px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.20), transparent 70%);
+}
+
+.pos-section::after {
+    width: 700px;
+    height: 700px;
+    bottom: -200px;
+    right: -200px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 70%);
+}
+
+.neg-section::before {
+    width: 600px;
+    height: 600px;
+    top: -150px;
+    left: -150px;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.15), transparent 70%);
+}
+
+.neg-section::after {
+    width: 700px;
+    height: 700px;
+    bottom: -200px;
+    right: -200px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.10), transparent 70%);
+}
+
+/* ========================= 
+   Date Navigation
+   ========================= */
+
+.date-nav-row {
+    width: 100%;
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--border-light);
+    gap: 16px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.date-nav-row .q-btn {
+    border-radius: var(--radius-md) !important;
+    border: 1.5px solid var(--border-base) !important;
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    padding: 8px 16px !important;
+    transition: all var(--transition-base) !important;
+    font-size: 0.9rem !important;
+}
+
+.date-nav-row .q-btn:hover {
+    border-color: var(--text-secondary) !important;
+    background: var(--bg-secondary) !important;
+    transform: translateY(-1px);
+}
+
+.date-nav-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-group-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.date-nav-date {
+    flex: 1;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    color: var(--text-primary);
+    pointer-events: none;
+}
+
+/* ========================= 
+   Header
+   ========================= */
+
+.header-container {
+    position: relative;
+    z-index: 10;
+    width: var(--page-w);
+    max-width: 100%;
+    margin: 0 auto 32px auto;
+    padding: 28px 32px;
+    background: var(--glass-strong);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+.header-title {
+    margin: 0 0 8px 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+}
+
+.header-sub {
+    margin: 0 0 20px 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Progress bar styling */
+.score-bar-positive,
+.score-bar-negative {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.q-linear-progress {
+    border-radius: var(--radius-sm) !important;
+    height: 16px !important;
+    overflow: hidden !important;
+    background-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Hide the progress value text inside the bar */
+.q-linear-progress .absolute-center {
+    display: none !important;
+}
+
+.q-linear-progress__model {
+    border-radius: var(--radius-sm) !important;
+    height: 100% !important;
+}
+
+/* Green progress bar for positive score */
+.score-bar-positive .q-linear-progress__model {
+    background: linear-gradient(90deg, #16a34a, rgba(34, 197, 94, 0.85)) !important;
+    box-shadow: 0 0 8px rgba(22, 163, 74, 0.3) !important;
+}
+
+/* Red progress bar for negative score */
+.score-bar-negative .q-linear-progress__model {
+    background: linear-gradient(90deg, #dc2626, rgba(239, 68, 68, 0.85)) !important;
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.3) !important;
+}
+
+/* Score label styling */
+.score-display {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Goodbye dialog */
+.goodbye-card {
+    min-width: 320px;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    background: var(--glass-strong);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.goodbye-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.goodbye-sub {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* Reload button */
+.header-container .q-btn {
+    border-radius: var(--radius-md) !important;
+    border: 1.5px solid var(--border-base) !important;
+    background: var(--bg-secondary) !important;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    transition: all var(--transition-base) !important;
+    font-size: 0.9rem !important;
+}
+
+.header-container .q-btn:hover {
+    background: var(--bg-primary) !important;
+    border-color: var(--text-secondary) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* ========================= 
+   Pyramid Layers & Grid Layout
+   ========================= */
+
+.pyramid-layers-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    max-width: var(--page-w);
+    margin: 0 auto;
+}
+
+.category-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.category-group-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+
+.pos-section .category-group-title {
+    color: var(--positive);
+}
+
+.neg-section .category-group-title {
+    color: var(--negative);
+}
+
+.pyramid-layer {
+    position: relative;
+    width: 100%;
+    background: var(--glass-strong);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    transition: all var(--transition-base);
+}
+
+.pyramid-layer:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.layer-pad {
+    height: 20px;
+    opacity: 0;
+}
+
+.habit-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+
+/* ========================= 
+   Habit Buttons
+   ========================= */
+
+.habit-btn.q-btn {
+    border-radius: var(--radius-md) !important;
+    background: transparent !important;
+    border: 1.5px solid var(--border-base) !important;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
+    font-weight: 600 !important;
+    padding: 16px 14px !important;
+    min-height: 72px !important;
+    transition: all var(--transition-base) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
+}
+
+/* Remove Quasar default effects */
+.habit-btn.q-btn::before,
+.habit-btn.q-btn .q-focus-helper {
+    display: none !important;
+}
+
+/* Button content */
+.habit-btn.q-btn .q-btn__content {
+    font-weight: 600 !important;
+    letter-spacing: -0.2px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+}
+
+/* Hover state - subtle and refined */
+.habit-btn.q-btn:not(.is-done):hover {
+    border-color: var(--text-secondary) !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* Positive hints (untoggled) */
+.habit-btn.q-btn.is-pos:not(.is-done) {
+    border-color: var(--positive) !important;
+    color: var(--positive) !important;
+    font-weight: 700 !important;
+}
+
+.habit-btn.q-btn.is-pos:not(.is-done):hover {
+    border-color: var(--positive-dark) !important;
+    background: rgba(34, 197, 94, 0.10) !important;
+    color: var(--positive-dark) !important;
+}
+
+/* Negative hints (untoggled) */
+.habit-btn.q-btn.is-neg:not(.is-done) {
+    border-color: var(--negative) !important;
+    color: var(--negative) !important;
+    font-weight: 700 !important;
+}
+
+.habit-btn.q-btn.is-neg:not(.is-done):hover {
+    border-color: var(--negative-dark) !important;
+    background: rgba(220, 38, 38, 0.10) !important;
+    color: var(--negative-dark) !important;
+}
+
+/* ========================= 
+   Toggled/Done States
+   ========================= */
+
+.habit-btn.q-btn.is-done {
+    border: 1.5px solid transparent !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.25) inset,
+        var(--shadow-md) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.20);
+}
+
+.habit-btn.q-btn.is-done,
+.habit-btn.q-btn.is-done .q-btn__content,
+.habit-btn.q-btn.is-done span {
+    color: #ffffff !important;
+}
+
+.habit-btn.q-btn.is-done:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.25) inset,
+        var(--shadow-lg) !important;
+}
+
+/* ========================= 
+   Positive Category Gradients
+   ========================= */
+
+.habit-btn.q-btn.is-done.is-pos.cat-must {
+    background: linear-gradient(135deg, 
+        rgba(34, 197, 94, 0.88) 0%,
+        rgba(34, 197, 94, 0.80) 50%,
+        rgba(20, 184, 166, 0.75) 100%) !important;
+}
+
+.habit-btn.q-btn.is-done.is-pos.cat-good {
+    background: linear-gradient(135deg,
+        rgba(22, 163, 74, 0.92) 0%,
+        rgba(34, 197, 94, 0.85) 50%,
+        rgba(20, 184, 166, 0.78) 100%) !important;
+}
+
+.habit-btn.q-btn.is-done.is-pos.cat-great {
+    background: linear-gradient(135deg,
+        rgba(14, 165, 67, 0.95) 0%,
+        rgba(22, 163, 74, 0.90) 50%,
+        rgba(12, 130, 130, 0.82) 100%) !important;
+}
+
+/* ========================= 
+   Negative Category Gradients
+   ========================= */
+
+.habit-btn.q-btn.is-done.is-neg.cat-bad {
+    background: linear-gradient(135deg,
+        rgba(239, 68, 68, 0.88) 0%,
+        rgba(239, 68, 68, 0.80) 50%,
+        rgba(251, 113, 133, 0.75) 100%) !important;
+}
+
+.habit-btn.q-btn.is-done.is-neg.cat-killer {
+    background: linear-gradient(135deg,
+        rgba(220, 38, 38, 0.92) 0%,
+        rgba(239, 68, 68, 0.85) 50%,
+        rgba(248, 113, 113, 0.78) 100%) !important;
+}
+
+.habit-btn.q-btn.is-done.is-neg.cat-must_avoid {
+    background: linear-gradient(135deg,
+        rgba(185, 28, 28, 0.95) 0%,
+        rgba(220, 38, 38, 0.90) 50%,
+        rgba(239, 68, 68, 0.82) 100%) !important;
+    color: #ffffff !important;
+}
+
+/* ========================= 
+   Animations
+   ========================= */
+
+/* Tab and Stats Styling */
+.q-tabs {
+    width: 100%;
+    border-bottom: 1px solid var(--border-light) !important;
+    background: var(--bg-secondary) !important;
+    box-sizing: border-box;
+}
+
+.q-tab-panels {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.q-panel.scroll {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Override NiceGUI default flex-start to allow centered content in tab panels */
+.nicegui-tab-panel {
+    width: 100%;
+    padding: 0 !important;
+}
+
+.q-tab-panels,
+.q-panel.scroll {
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.nicegui-tab-panel > .nicegui-column.w-full {
+    align-items: center;
+}
+
+.q-tabs .q-tab {
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+    transition: all var(--transition-base) !important;
+}
+
+.q-tabs .q-tab--active {
+    color: var(--text-primary) !important;
+}
+
+.q-tabs .q-tabs__content {
+    border: none !important;
+}
+
+.stat-card {
+    background: var(--glass-strong) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 20px !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.stats-groups {
+    gap: 14px;
+}
+
+.stats-group-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    margin-top: 10px;
+}
+
+.stats-group-title.is-pos {
+    color: var(--positive);
+}
+
+.stats-group-title.is-neg {
+    color: var(--negative);
+}
+
+.stats-row {
+    align-items: center;
+    gap: 12px;
+}
+
+.stats-name {
+    width: 160px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.stats-bar {
+    flex: 1;
+}
+
+.stats-rate {
+    width: 44px;
+    text-align: right;
+    color: var(--text-secondary);
+}
+
+.stat-label {
+    font-size: 0.85rem !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.stat-value {
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    margin-top: 8px !important;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.habit-btn {
+    animation: fadeInScale var(--transition-base) ease-out;
+}
+
+/* ========================= 
+   Responsive Adjustments
+   ========================= */
+
+@media (max-width: 1200px) {
+    .pyramid-layers-container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .pyramid-layers-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+    
+    .header-container {
+        padding: 24px 28px;
+    }
+    
+    .header-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pyramid-layers-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .pyramid-section {
+        padding: 40px 20px;
+    }
+}
