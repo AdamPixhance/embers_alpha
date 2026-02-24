@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableExtensions
-title Embers - Daily Habits Tracker
+title Embers0.1 - Daily Habits Tracker
 
 pushd "%~dp0.."
 
@@ -27,8 +27,8 @@ if not errorlevel 1 (
 	goto :done
 )
 
-REM Start Embers with output suppressed
-start "Embers" /b "%PYTHON%" "%APP_FILE%" > nul 2>&1
+REM Start Embers0.1 with output suppressed
+start "Embers0.1" /b "%PYTHON%" "%APP_FILE%" > nul 2>&1
 
 REM Wait up to 45 seconds for port 8080
 for /L %%i in (1,1,45) do (
@@ -42,7 +42,7 @@ for /L %%i in (1,1,45) do (
 
 REM Startup failed
 echo.
-echo Embers did not start on port 8080.
+echo Embers0.1 did not start on port 8080.
 echo Please check that Python 3.10+ is installed and requirements.txt is installed.
 echo.
 pause

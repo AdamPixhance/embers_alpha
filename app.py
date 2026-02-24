@@ -1787,7 +1787,7 @@ def main() -> None:
     ui.timer(2.0, _background_sync_check)
     
     # Graceful shutdown
-    ui.run(title="Embers — Daily Habits", port=8080, reload=False, show=False)
+    ui.run(title="Embers0.1 — Daily Habits", port=8080, reload=False, show=False)
 
 
 if __name__ == "__main__":

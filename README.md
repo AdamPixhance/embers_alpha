@@ -1,6 +1,22 @@
-# Embers
+# Embers0.1 (Archived)
 
-Embers is a local-first habits tracker for people who want a simple daily flow:
+## Status
+
+This repository is now **abandoned/archived** as the previous Embers line.
+
+### Why
+
+- I started with Embers and liked the core habit-tracking ideas.
+- After building Pixcope, I preferred the native `.exe` UX/UI and configuration-first workflow.
+- I am now building a new Embers generation that keeps the core ideas but follows the Pixcope-style product direction.
+
+### Notes
+
+- This repo remains as a historical snapshot of Embers0.1.
+- No new feature development is planned here.
+- Active work is moving to the new Embers project.
+
+Embers0.1 is a local-first habits tracker for people who want a simple daily flow:
 
 1. Toggle what you did.
 2. Click **Complete Day**.
@@ -21,7 +37,7 @@ It stores data on your machine, supports historical editing, tracks streaks, and
 
 ## Why this app exists
 
-Most habit apps are either too heavy or too generic. Embers is designed for a focused personal workflow that respects your privacy and doesn't get in the way of your habit building.
+Most habit apps are either too heavy or too generic. Embers0.1 is designed for a focused personal workflow that respects your privacy and doesn't get in the way of your habit building.
 
 ## Tech stack
 
@@ -35,7 +51,7 @@ Most habit apps are either too heavy or too generic. Embers is designed for a fo
 - `app.py` — main application (1800+ lines, includes all UI, database, and logic)
 - `styles.css` — NiceGUI component styling
 - `requirements.txt` — Python dependencies
-- `Embers.bat` — Windows launcher (portable, no hardcoded Python paths)
+- `scripts/Embers0.1.bat` — Windows launcher (portable, no hardcoded Python paths)
 - `data/Habits.xlsx` — habit definitions (source of truth, opened at startup)
 - `data/habits.db` — SQLite database (auto-created, stores all tracking data)
 - `backups/` — yearly Excel export backups (auto-saved on app close)
@@ -55,17 +71,17 @@ Most habit apps are either too heavy or too generic. Embers is designed for a fo
 3. Run: `python app.py`
 4. Open http://localhost:8080
 
-**On Windows**, you can also just run `Embers.bat` from the command line.
+**On Windows**, you can also just run `scripts/Embers0.1.bat` from the command line.
 
 ## Packaging for Distribution
 
 ### ⭐ Pre-built Portable Version (Ready to Share NOW!)
 
 A standalone executable is already built and ready to share:
-- **Location**: `dist/Embers/Embers.exe`
+- **Location**: `dist/Embers0.1/Embers0.1.exe`
 - **What's included**: All dependencies bundled, no Python installation needed
-- **To share**: Zip the entire `dist/Embers/` folder and share as `Embers-Portable.zip`
-- **For users**: Extract zip, double-click `Embers.exe`, read `START_HERE.txt`
+- **To share**: Zip the entire `dist/Embers0.1/` folder and share as `Embers0.1-Portable.zip`
+- **For users**: Extract zip, double-click `Embers0.1.exe`, read `START_HERE.txt`
 
 **This is the easiest distribution method. No additional steps required. Users just download and run.**
 
@@ -77,7 +93,7 @@ If you want to rebuild or customize the executable:
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build_exe.ps1 -Clean
 ```
-Output: `dist/Embers/` (includes Embers.exe, styles.css, bundled dependencies, data folder, and templates)
+Output: `dist/Embers0.1/` (includes Embers0.1.exe, styles.css, bundled dependencies, data folder, and templates)
 
 **2) Build Setup.exe installer** (optional, for professional Windows distribution)
 
@@ -87,7 +103,7 @@ If you have Inno Setup 6 installed:
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build_installer.ps1
 ```
-Output: `dist-installer/Embers-Setup-<version>.exe` (one-click Windows installer)
+Output: `dist-installer/Embers0.1-Setup-<version>.exe` (one-click Windows installer)
 ## Habits template (`data/Habits.xlsx`)
 
 Use sheet `habits`. Keep `habit_id` stable once created.
@@ -117,7 +133,7 @@ Optional columns:
 3. Click **Complete Day** to create a final snapshot and lock the day.
 4. If needed, click **Unlock Day** to correct mistakes.
 
-If you leave a previous day open, Embers prompts you on next launch to finalize it or continue editing it first.
+If you leave a previous day open, Embers0.1 prompts you on next launch to finalize it or continue editing it first.
 
 ## Scoring, streaks, and badges
 
@@ -132,11 +148,11 @@ If you leave a previous day open, Embers prompts you on next launch to finalize 
 
 ### 🟢 Recommended: Portable Folder (Best for Friends & Family)
 
-**Already ready in `dist/Embers/`** — No additional work needed!
+**Already ready in `dist/Embers0.1/`** — No additional work needed!
 
-1. Zip the entire `dist/Embers/` folder → `Embers-Portable.zip`
+1. Zip the entire `dist/Embers0.1/` folder → `Embers0.1-Portable.zip`
 2. Share the zip file with friends/family via email, cloud storage, or GitHub Releases
-3. **They**: Extract, double-click `Embers.exe`, and read `START_HERE.txt`
+3. **They**: Extract, double-click `Embers0.1.exe`, and read `START_HERE.txt`
 
 **Requirements for users**: Nothing! No Python, no installation, no tech knowledge.
 
@@ -153,7 +169,7 @@ If you leave a previous day open, Embers prompts you on next launch to finalize 
 If you want to build a Setup.exe for one-click installation:
 1. Install [Inno Setup 6](https://www.jrsoftware.org/isdl.php) on your machine
 2. Run `powershell -ExecutionPolicy Bypass -File .\scripts\build_installer.ps1`
-3. Get `Embers-Setup-<date>.exe` from `dist-installer/`
+3. Get `Embers0.1-Setup-<date>.exe` from `dist-installer/`
 4. Share the Setup.exe file—users can install with one click
 
 ### 🟣 Source Code Distribution (For Developers)
@@ -168,13 +184,13 @@ Share the GitHub repository. Developers can clone and run from source with Pytho
 
 ```powershell
 # Create a shareable zip of the portable version
-Compress-Archive -Path "dist\Embers" -DestinationPath "Embers-Portable.zip"
+Compress-Archive -Path "dist\Embers0.1" -DestinationPath "Embers0.1-Portable.zip"
 ```
 
 Then:
-- Upload `Embers-Portable.zip` to [GitHub Releases](https://github.com/AdamPixhance/embers/releases)
+- Upload `Embers0.1-Portable.zip` to [GitHub Releases](https://github.com/AdamPixhance/embers/releases)
 - Or share directly via Google Drive, OneDrive, email, etc.
-- They extract and double-click `Embers.exe`
+- They extract and double-click `Embers0.1.exe`
 
 Done! 🎉
 

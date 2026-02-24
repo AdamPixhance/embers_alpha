@@ -9,7 +9,7 @@ $Root = Split-Path -Parent $PSScriptRoot
 Push-Location $Root
 
 try {
-    if ($BuildExeFirst -or -not (Test-Path '.\dist\Embers\Embers.exe')) {
+    if ($BuildExeFirst -or -not (Test-Path '.\dist\Embers0.1\Embers0.1.exe')) {
         & powershell -NoProfile -ExecutionPolicy Bypass -File '.\scripts\build_exe.ps1'
     }
 
@@ -26,7 +26,7 @@ try {
     }
 
     $Version = Get-Date -Format 'yyyy.MM.dd'
-    & $iscc "/DMyAppVersion=$Version" '.\installer\Embers.iss'
+    & $iscc "/DMyAppVersion=$Version" '.\installer\Embers0.1.iss'
 
     Write-Host ''
     Write-Host 'Installer build complete.' -ForegroundColor Green

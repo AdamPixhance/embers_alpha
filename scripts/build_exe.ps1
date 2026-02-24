@@ -24,7 +24,7 @@ try {
     & $Python -m PyInstaller `
         --noconfirm `
         --clean `
-        --name Embers `
+        --name Embers0.1 `
         --windowed `
         --onedir `
         --add-data "styles.css;." `
@@ -32,9 +32,9 @@ try {
         --collect-all nicegui `
         app.py
 
-    $DistRoot = Join-Path $Root 'dist\Embers'
+    $DistRoot = Join-Path $Root 'dist\Embers0.1'
     if (-not (Test-Path $DistRoot)) {
-        throw 'Build output not found at dist\Embers'
+        throw 'Build output not found at dist\Embers0.1'
     }
 
     $DataDir = Join-Path $DistRoot 'data'
